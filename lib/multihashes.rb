@@ -19,7 +19,7 @@ module Multihashes
     length = digest.bytesize
     key = TABLE.key hash_function
     raise HashFunctionNotImplemented, 'unknown hash function code' if key.nil?
-    [TABLE.key(hash_function), length, digest].pack("CCA#{length}")
+    [key, length, digest].pack("CCA#{length}")
   end
 
   def self.decode(multihash)
